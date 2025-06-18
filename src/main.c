@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "parser/parser.h"
+#include "shell/shell.h"
 
 int main() {
 	char *line = NULL;
@@ -17,9 +18,10 @@ int main() {
 			break;
 		} else {
 			argv = parser(nread, line);
+			process_input(argv);
 		}
 
-		printf("here's the second word you typed: %stype exit to exit\n", argv[1]);	
+		//printf("here's the second word you typed: %stype exit to exit\n", argv[1]);	
 
 	}
 

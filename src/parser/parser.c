@@ -1,22 +1,23 @@
 #include "parser.h"
 #include <stdio.h>
 char** parser(ssize_t size, char* input) {
-	char **argv = malloc(2 * sizeof(char*));
-	//argv = malloc(2 * sizeof(char*)); // initializing output
-	char cur[size+1]; // setting to max possible size including null byte
 	int index = 0; // which token we are on
-	int j = 0;
-	for (ssize_t i = 0; i <= size; i++) {
-		if (i == size || input[i] == ' ') { // if we have reached the end or a space
-			argv[index] = malloc(strlen(cur) + 1); // then append this token to our result
-			cur[j] = '\0';
-			j = 0;
-			strcpy(argv[index], cur);
+	
+	for (ssize_t i = 0; i < size; i++) {
+		if (input[i] == ' ' || i == size - 1) { // if we have reached a space or the newline char
+			input[i] = '\0'; // replace it with terminating null char
 			index++;
-		} else {
-			cur[j] = input[i];
-			j++;
 		}
 	}
-			return argv;
+
+	char **argv = malloc((index + 1) * sizeof(char*)); // add one for null-terminating pointer
+
+	int bp = 0; // beginning pointer, beginning of the current word
+	int i = 0;
+	for (; i < index; i++) {
+		argv[i] = &input[bp]; // we point to the original input that we split up with NULL chars
+		bp += strlen(argv[i]) + 1; // move to the start of the next word
+	}
+	argv[i] = NULL; // null terminate
+	return argv;
 }
