@@ -4,4 +4,4 @@ This is a personal project where I rebuilt a shell from scratch in C to deepen m
 This version is not based on or derived from any past course materials and was built independently.
 
 I have the basics (execvp, exit) working, check it out below!
-![My Shell](./progres.png)
+![My Shell](./progress.png)
