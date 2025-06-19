@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "parser/parser.h"
 #include "shell/shell.h"
+#include "builtins/builtins.h"
 
 int main() {
 	char *line = NULL;
@@ -12,16 +13,14 @@ int main() {
 
 	while(1) {
 		printf("my_shell$ ");
-		nread = getline(&line, &len, stdin);
+		nread = getline(&line, &len, stdin); // get input
 
-		if (!strcmp("exit\n", line) || nread == -1) {
-			break;
-		} else {
-			argv = parser(nread, line);
-			process_input(argv);
+		if (nread == -1) {
+			perror("Error getting input");
 		}
 
-		//printf("here's the second word you typed: %stype exit to exit\n", argv[1]);	
+		argv = parser(nread, line); 
+		process_input(argv);
 
 	}
 

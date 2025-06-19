@@ -1,6 +1,6 @@
 #include "parser.h"
 #include <stdio.h>
-char** parser(ssize_t size, char* input) {
+char **parser(ssize_t size, char *input) {
 	int index = 0; // which token we are on
 	
 	for (ssize_t i = 0; i < size; i++) {

@@ -3,5 +3,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <errno.h>
+#include <string.h>
+#include "../builtins/builtins.h"
 
-void process_input(char** argv);
+void process_input(char **argv);
