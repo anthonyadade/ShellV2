@@ -1,6 +1,6 @@
 #include "parser.h"
 #include <stdio.h>
-char **parser(ssize_t size, char *input) {
+char **parser(ssize_t size, char *input, int *num_tokens) {
 	int index = 0; // which token we are on
 	
 	for (ssize_t i = 0; i < size; i++) {
@@ -9,7 +9,7 @@ char **parser(ssize_t size, char *input) {
 			index++;
 		}
 	}
-
+	*num_tokens = index; // save the number of tokens for later
 	char **argv = malloc((index + 1) * sizeof(char*)); // add one for null-terminating pointer
 
 	int bp = 0; // beginning pointer, beginning of the current word

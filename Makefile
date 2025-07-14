@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -g -MMD
 TARGET = shelll
 
-SRC_DIRS = src src/parser src/shell src/builtins
+SRC_DIRS = src src/parser src/shell src/builtins src/jobs
 BUILD_DIR = build
 
 # === Sources ===
